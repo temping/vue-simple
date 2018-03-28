@@ -40,8 +40,12 @@ jobs:
           name: Install Dependencies
           command: npm install -g vue-cli
       - run:
-          name: Install Dependencies
-          command: vue init temping/vue-simple sample
+          name: Make sample
+          command: |
+            vue init temping/vue-simple sample
+            sample
+            sample
+            npc
       - persist_to_workspace:
             root: ~/project
             paths:
