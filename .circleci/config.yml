@@ -47,9 +47,9 @@ jobs:
             sample
             npc
       - persist_to_workspace:
-            root: ~/project
+            root: ~/project/vue-simple
             paths:
-              - vue-simple/sample
+              - sample
 
 workflows:
   version: 2
