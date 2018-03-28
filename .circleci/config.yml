@@ -6,7 +6,7 @@ defaults: &defaults
     - image: banian/node-headless-chrome
 
 jobs:
-  setup:
+  checkout:
     <<: *defaults
     steps:
       # Checkout repository
@@ -32,9 +32,21 @@ jobs:
           root: ~/project
           paths:
             - vue-simple
-            
+  init:
+    - run:
+        name: Install Dependencies
+        command: npm install -g vue-cli
+    - run:
+        name: Install Dependencies
+        command: vue init temping/vue-simple sample
+    - persist_to_workspace:
+          root: ~/project
+          paths:
+            - vue-simple/sample
+
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - setup
+      - checkout
+      - init
