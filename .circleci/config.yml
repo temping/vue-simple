@@ -33,6 +33,7 @@ jobs:
           paths:
             - vue-simple
   init:
+    <<: *defaults
     - run:
         name: Install Dependencies
         command: npm install -g vue-cli
