@@ -1,7 +1,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/project/work
+  working_directory: ~/project/vue-simple
   docker:
     - image: banian/node-headless-chrome
 
@@ -14,7 +14,7 @@ jobs:
 
       # Restore cache
       - restore_cache:
-          key: yarn-{{ checksum "package-lock.json" }}
+          key: yarn-{{ checksum "package.json" }}
 
       # Install dependencies
       - run:
@@ -23,7 +23,7 @@ jobs:
 
       # Keep cache
       - save_cache:
-          key: yarn-{{ checksum "package-lock.json" }}
+          key: yarn-{{ checksum "package.json" }}
           paths:
             - "node_modules"
 
@@ -31,10 +31,10 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-            - work
+            - vue-simple
+            
 workflows:
   version: 2
   build_and_test:
     jobs:
       - setup
-      - build
