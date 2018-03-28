@@ -32,18 +32,20 @@ jobs:
           root: ~/project
           paths:
             - vue-simple
+
   init:
     <<: *defaults
-    - run:
-        name: Install Dependencies
-        command: npm install -g vue-cli
-    - run:
-        name: Install Dependencies
-        command: vue init temping/vue-simple sample
-    - persist_to_workspace:
-          root: ~/project
-          paths:
-            - vue-simple/sample
+    steps:
+      - run:
+          name: Install Dependencies
+          command: npm install -g vue-cli
+      - run:
+          name: Install Dependencies
+          command: vue init temping/vue-simple sample
+      - persist_to_workspace:
+            root: ~/project
+            paths:
+              - vue-simple/sample
 
 workflows:
   version: 2
