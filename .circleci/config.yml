@@ -53,3 +53,5 @@ workflows:
     jobs:
       - checkout
       - init
+        requires:
+          - checkout
