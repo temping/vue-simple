@@ -52,6 +52,6 @@ workflows:
   build_and_test:
     jobs:
       - checkout
-      - init
+      - init:
         requires:
           - checkout
