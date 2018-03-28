@@ -1,0 +1,13 @@
+{
+  "name": "{{ name }}",
+  "description": "{{ description }}",
+  "author": "{{ author }}",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "live-server"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}

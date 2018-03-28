@@ -1,0 +1,20 @@
+{
+  "name": "vue-simple-basecode",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test": "vue init temping/vue-simple sample",
+    "test:full": "npm run test && cd sample && npm i && npm run dev"
+  },
+  "keywords": [
+    "nuxt",
+    "express",
+    "typescript"
+  ],
+  "author": "AHN HO JUNG",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.0",
+    "vue-cli": "^2.9.3"
+  }
+}
