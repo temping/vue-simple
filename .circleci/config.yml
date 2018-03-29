@@ -33,23 +33,23 @@ jobs:
           name: Init vue template 'sample'
           command: expect .circleci/vue-cli-init.exp myproject mydescription "Real Name"
       - run:
+          name: 'sample' package.json
           working_directory: ~/project/vue-simple/sample
-          name: root/sample package.json
           command: cat package.json
       - run:
-          working_directory: ~/project/vue-simple/sample
           name: Npm install
+          working_directory: ~/project/vue-simple/sample
           command: npm install
       - run:
+          name: Server start(npm run start)
           working_directory: ~/project/vue-simple/sample
-          name: server run
           command: npm start
           background: true
       - run:
-          name: response
+          name: GET index
           command: wget -O result.html --retry-connrefused --waitretry=2 --read-timeout=20 --timeout=15 -t 12 localhost:8080
       - run:
-          name: response
+          name: Result response
           command: cat result.html
 
 workflows:
