@@ -47,7 +47,10 @@ jobs:
           background: true
       - run:
           name: response
-          command: wget --retry-connrefused --waitretry=2 --read-timeout=20 --timeout=15 -t 12 localhost:8080
+          command: wget -O result.html --retry-connrefused --waitretry=2 --read-timeout=20 --timeout=15 -t 12 localhost:8080
+      - run:
+          name: response
+          command: cat result.html
 
 workflows:
   version: 2
