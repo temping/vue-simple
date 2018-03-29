@@ -33,7 +33,7 @@ jobs:
           name: Init vue template 'sample'
           command: expect .circleci/vue-cli-init.exp myproject mydescription "Real Name"
       - run:
-          name: 'sample' package.json
+          name: \'sample\' package.json
           working_directory: ~/project/vue-simple/sample
           command: cat package.json
       - run:
