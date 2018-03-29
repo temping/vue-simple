@@ -7,7 +7,7 @@ defaults: &defaults
 
 dependencies:
   pre:
-    - sudo apt-get update; sudo apt-get install expect
+    - sudo apt-get update; sudo apt-get install -y expect
      
 jobs:
 
@@ -19,7 +19,7 @@ jobs:
 
       # Restore cache
       - restore_cache:
-          key: yarn-{{ checksum "package.json" }}
+          key: package-{{ checksum "package-lock.json" }}
 
       # Install dependencies
       - run:
@@ -28,7 +28,7 @@ jobs:
 
       # Keep cache
       - save_cache:
-          key: yarn-{{ checksum "package.json" }}
+          key: package-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
 
