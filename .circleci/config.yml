@@ -6,6 +6,11 @@ defaults: &defaults
 
 version: 2
 jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+
   checkout:
     <<: *defaults
     steps:
