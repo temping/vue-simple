@@ -11,8 +11,8 @@ jobs:
     steps:
       #install expect
       - run:
-        name: Install expect
-        command: echo "y\r" | apt-get expect
+          name: Install expect
+          command: echo "y\r" | apt-get expect
 
   checkout:
     <<: *defaults
@@ -60,9 +60,10 @@ workflows:
   build_and_test:
     jobs:
       - setup
+
       - checkout
 
       - init:
-        requires:
-          - setup
-          - checkout
+          requires:
+            - setup
+            - checkout
