@@ -66,4 +66,5 @@ workflows:
 
       - init:
           requires:
+            - setup
             - checkout
