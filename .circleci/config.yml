@@ -31,14 +31,11 @@ jobs:
           paths:
             - .circleci
       - run:
-          name: Make sample
-          command: expect .circleci/vue-cli-init.exp myProject myDescription myRealName
+          name: Init vue template 'sample'
+          command: expect .circleci/vue-cli-init.exp myproject mydescription "Real Name"
       - run:
-          name: vue-cli-init result
-          command: ls
-      - run:
-          name: vue-cli-init result 2
-          command: ls sample
+          name: Npm install
+          command: cd sample && npm i
 
 workflows:
   version: 2
