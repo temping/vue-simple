@@ -48,7 +48,7 @@ jobs:
     steps:
       - run:
           name: Make sample
-          command: expect .circleci/vue-init.exp
+          command: expect .circleci/vue-init.exp myProject myDescription myRealName
       - persist_to_workspace:
             root: ~/project/vue-simple
             paths:
