@@ -2,7 +2,7 @@
 
 # ./vue-cli-init.expect name desc auther
 
-set timeout -1
+set timeout 20
 set init_name [lindex $argv 0]
 set init_description [lindex $argv 1]
 set init_author [lindex $argv 2]
@@ -10,21 +10,27 @@ set init_author [lindex $argv 2]
 spawn vue init temping/vue-simple sample
 
 expect {
-  "name" {
+  -re "Target directory exists" {
+    send "Y\r"
+    exp_continue
+  }
+
+  -re "App name" {
     send "$init_name\r"
     exp_continue
   }
 
-  "description" {
+  -re "App description" {
     send "$init_name\r"
     exp_continue
   }
 
-  "Author" {
+  -re "Author" {
     send "$init_name\r"
     exp_continue
+  }
+
+  timeout {
+    exit 1
   }
 }
-
-wait
-close
