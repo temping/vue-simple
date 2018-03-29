@@ -21,14 +21,17 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run:
+          name: apt update
+          command: sudo apt-get update
+      - run:
           name: Install expect
-          command: sudo apt-get update && sudo apt-get install -y expect
+          command: sudo apt-get install -y expect && expect -v
       - run:
           name: Install curl
-          command: sudo apt-get install -y curl
+          command: sudo apt-get install -y curl && curl --version
       - run:
           name: Install vue-cli
-          command: sudo npm install -g vue-cli
+          command: sudo npm install -g vue-cli && vue --version
       - run:
           name: Init vue template 'sample'
           command: expect .circleci/vue-cli-init.exp myproject mydescription "Real Name"
