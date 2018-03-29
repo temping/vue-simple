@@ -4,13 +4,15 @@ defaults: &defaults
   working_directory: ~/project/vue-simple
   docker:
     - image: circleci/node:8.10-browsers
-
-dependencies:
-  pre:
-    - sudo apt-get update; sudo apt-get install -y expect
-    - sudo npm install -g vue-cli
      
 jobs:
+  setup:
+    - run:
+        name: Install expect
+        command: sudo apt-get update; sudo apt-get install -y expect
+    - run:
+        name: Install vue-cli
+        command: npm install -g vue-cli
 
   checkout:
     <<: *defaults
@@ -54,8 +56,10 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - checkout
-
+      - setup
+      - checkout:
+          requires:
+            - setup
       - init:
           requires:
             - checkout
