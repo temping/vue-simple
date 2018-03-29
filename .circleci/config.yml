@@ -46,6 +46,9 @@ jobs:
           name: server run
           command: npm start
       - run:
+          name: where
+          command: pwd && ls
+      - run:
           name: response
           command: |
             curl --connect-timeout 5 \\
