@@ -21,12 +21,12 @@ expect {
   }
 
   -re "App description" {
-    send "$init_name\r"
+    send "$init_description\r"
     exp_continue
   }
 
   -re "Author" {
-    send "$init_name\r"
+    send "$init_author\r"
     exp_continue
   }
 
