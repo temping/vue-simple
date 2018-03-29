@@ -12,7 +12,7 @@ jobs:
       #install expect
       - run:
           name: Install expect
-          command: echo "y\r" | apt install expect
+          command: echo "y\r" | apt-get install expect
 
   checkout:
     <<: *defaults
