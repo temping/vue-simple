@@ -21,40 +21,36 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run:
-          name: Install Default dependancies
-          command: sudo apt-get update && sudo apt-get install -y expect && sudo npm install -g vue-cli
-      - persist_to_workspace:
-          root: ~/project/vue-simple
-          paths:
-            - .circleci
+          name: apt update
+          command: sudo apt-get update
+      - run:
+          name: Install expect
+          command: sudo apt-get install -y expect && expect -v
+      - run:
+          name: Install vue-cli
+          command: sudo npm install -g vue-cli && vue --version
       - run:
           name: Init vue template 'sample'
           command: expect .circleci/vue-cli-init.exp myproject mydescription "Real Name"
       - run:
-          name: Check the root
-          command: pwd && ls
-      - run:
-          name: Check the root/sample
-          command: cd sample && pwd && ls
-      - run:
-          name: root/sample package.json
+          name: \'sample\' package.json
+          working_directory: ~/project/vue-simple/sample
           command: cat package.json
       - run:
           name: Npm install
+          working_directory: ~/project/vue-simple/sample
           command: npm install
       - run:
-          name: server run
+          name: Server start(npm run start)
+          working_directory: ~/project/vue-simple/sample
           command: npm start
+          background: true
       - run:
-          name: response
-          command: |
-            curl --connect-timeout 5 \\
-            --max-time 10 \\
-            --retry 5 \\
-            --retry-delay 0 \\
-            --retry-max-time 60 \\
-            'localhost:8080'\
-            \| grep \\<html\\>
+          name: GET index
+          command: wget -O result.html --retry-connrefused --waitretry=2 --read-timeout=20 --timeout=15 -t 12 localhost:8080
+      - run:
+          name: Result response
+          command: cat result.html
 
 workflows:
   version: 2
