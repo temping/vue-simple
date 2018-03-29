@@ -57,9 +57,11 @@ workflows:
   build_and_test:
     jobs:
       - setup
+
       - checkout:
           requires:
             - setup
+
       - init:
           requires:
             - checkout
