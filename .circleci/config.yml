@@ -53,7 +53,7 @@ jobs:
 
 workflows:
   version: 2
-  btd:
+  build_and_test:
     jobs:
       - checkout
       - init:
