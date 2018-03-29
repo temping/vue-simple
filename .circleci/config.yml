@@ -5,14 +5,11 @@ defaults: &defaults
   docker:
     - image: banian/node-headless-chrome
 
+dependencies:
+   override:
+     - apt-get install expect
+     
 jobs:
-  setup:
-    <<: *defaults
-    steps:
-      #install expect
-      - run:
-          name: Install expect
-          command: echo "y\r" | apt-get install expect
 
   checkout:
     <<: *defaults
@@ -59,11 +56,8 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - setup
-
       - checkout
 
       - init:
           requires:
-            - setup
             - checkout
