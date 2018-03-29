@@ -6,8 +6,8 @@ defaults: &defaults
     - image: banian/node-headless-chrome
 
 dependencies:
-   override:
-     - apt-get install expect
+  pre:
+    - sudo apt-get update; sudo apt-get install expect
      
 jobs:
 
