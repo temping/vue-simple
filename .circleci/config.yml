@@ -9,10 +9,7 @@ jobs:
   checkout:
     <<: *defaults
     steps:
-      # Checkout repository
       - checkout
-
-      # Persist files
       - persist_to_workspace:
           root: ~/project
           paths:
@@ -40,8 +37,17 @@ jobs:
           name: Check the root/sample
           command: cd sample && pwd && ls
       - run:
+          name: root/sample package.json
+          command: cat package.json
+      - run:
           name: Npm install
           command: npm install
+      - run:
+          name: server run
+          command: npm start
+      - run:
+          name: response
+          command: curl localhost:8080 | grep \<html\>
 
 workflows:
   version: 2
