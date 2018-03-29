@@ -1,0 +1,30 @@
+#!/usr/bin/expect
+
+# ./vue-cli-init.expect name desc auther
+
+set timeout -1
+set init_name [lindex $argv 0]
+set init_description [lindex $argv 1]
+set init_author [lindex $argv 2]
+
+spawn vue init temping/vue-simple sample
+
+expect {
+  "name" {
+    send "$init_name\r"
+    exp_continue
+  }
+
+  "description" {
+    send "$init_name\r"
+    exp_continue
+  }
+
+  "Author" {
+    send "$init_name\r"
+    exp_continue
+  }
+}
+
+wait
+close

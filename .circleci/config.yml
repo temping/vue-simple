@@ -41,11 +41,7 @@ jobs:
           command: npm install -g vue-cli
       - run:
           name: Make sample
-          command: |
-            vue init temping/vue-simple sample
-            sample
-            sample
-            npc
+          command: expect .circleci/vue-init.exp
       - persist_to_workspace:
             root: ~/project/vue-simple
             paths:
@@ -56,7 +52,7 @@ workflows:
   build_and_test:
     jobs:
       - checkout
-  
+
       - init:
           requires:
             - checkout
