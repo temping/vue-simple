@@ -47,7 +47,14 @@ jobs:
           command: npm start
       - run:
           name: response
-          command: curl localhost:8080 | grep \<html\>
+          command: |
+            curl --connect-timeout 5 \\
+            --max-time 10 \\
+            --retry 5 \\
+            --retry-delay 0 \\
+            --retry-max-time 60 \\
+            'localhost:8080'\
+            | grep \\<html\\>
 
 workflows:
   version: 2
