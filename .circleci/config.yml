@@ -39,6 +39,9 @@ jobs:
       - run:
           name: Install Default dependancies
           command: sudo apt-get update && sudo apt-get install -y expect && sudo npm install -g vue-cli
+      - run:
+          name: hmm?
+          command: ls -a
       - persist_to_workspace:
           root: ~/project/vue-simple
           paths:
