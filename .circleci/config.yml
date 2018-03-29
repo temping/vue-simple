@@ -3,7 +3,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/project/vue-simple
   docker:
-    - image: banian/node-headless-chrome
+    - image: circleci/node:8.10-browsers
 
 dependencies:
   pre:
