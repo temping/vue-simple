@@ -27,9 +27,6 @@ jobs:
           name: Install expect
           command: sudo apt-get install -y expect && expect -v
       - run:
-          name: Install curl
-          command: sudo apt-get install -y curl && curl --version
-      - run:
           name: Install vue-cli
           command: sudo npm install -g vue-cli && vue --version
       - run:
@@ -50,7 +47,7 @@ jobs:
           background: true
       - run:
           name: response
-          command: curl --connect-timeout 5 --max-time 5 --retry-connrefused --retry 10 --retry-delay 0 --retry-max-time 60 'localhost:8080'
+          command: wget --retry-connrefused --waitretry=2 --read-timeout=20 --timeout=15 -t 12 localhost:8080
 
 workflows:
   version: 2
