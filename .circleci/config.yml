@@ -51,7 +51,7 @@ jobs:
             --retry 5 \\
             --retry-delay 0 \\
             --retry-max-time 60 \\
-            'localhost:8080'\
+            'localhost:8080'\\
             \| grep \\<html\\>
 
 workflows:
