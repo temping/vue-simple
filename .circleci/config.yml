@@ -35,11 +35,10 @@ jobs:
           command: expect .circleci/vue-cli-init.exp myProject myDescription myRealName
       - run:
           name: vue-cli-init result
-          command:
-            - echo 'ls --- '
-            - ls
-            - echo 'ls --- sample --- '
-            - ls sample
+          command: ls
+      - run:
+          name: vue-cli-init result 2
+          command: ls sample
 
 workflows:
   version: 2
