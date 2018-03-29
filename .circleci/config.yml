@@ -29,10 +29,6 @@ jobs:
       - run:
           name: Install vue-cli
           command: sudo npm install -g vue-cli
-      - persist_to_workspace:
-          root: ~/project/vue-simple
-          paths:
-            - .circleci
       - run:
           name: Init vue template 'sample'
           command: expect .circleci/vue-cli-init.exp myproject mydescription "Real Name"
