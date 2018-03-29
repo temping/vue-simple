@@ -33,10 +33,13 @@ jobs:
       - run:
           name: Make sample
           command: expect .circleci/vue-cli-init.exp myProject myDescription myRealName
-      - persist_to_workspace:
-          root: ~/project/vue-simple
-          paths:
-            - sample
+      - run:
+          name: vue-cli-init result
+          command:
+            - echo 'ls --- '
+            - ls
+            - echo 'ls --- sample --- '
+            - ls sample
 
 workflows:
   version: 2
