@@ -6,6 +6,14 @@ defaults: &defaults
     - image: banian/node-headless-chrome
 
 jobs:
+  setup:
+    <<: *defaults
+    steps:
+      #install expect
+      - run:
+        name: Install expect
+        command: echo "y\r" | apt-get expect
+
   checkout:
     <<: *defaults
     steps:
@@ -51,8 +59,10 @@ workflows:
   version: 2
   build_and_test:
     jobs:
+      - setup
       - checkout
 
       - init:
-          requires:
-            - checkout
+        requires:
+          - setup
+          - checkout
