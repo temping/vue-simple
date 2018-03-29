@@ -40,6 +40,9 @@ jobs:
           name: Install Default dependancies
           command: sudo apt-get update && sudo apt-get install -y expect && sudo npm install -g vue-cli
       - run:
+          name: Where?
+          command: pwd
+      - run:
           name: Make sample
           command: expect .circleci/vue-init.exp myProject myDescription myRealName
       - persist_to_workspace:
