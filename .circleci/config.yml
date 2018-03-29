@@ -7,12 +7,14 @@ defaults: &defaults
      
 jobs:
   setup:
-    - run:
-        name: Install expect
-        command: sudo apt-get update; sudo apt-get install -y expect
-    - run:
-        name: Install vue-cli
-        command: npm install -g vue-cli
+    <<: *defaults
+    steps:
+      - run:
+          name: Install expect
+          command: sudo apt-get update; sudo apt-get install -y expect
+      - run:
+          name: Install vue-cli
+          command: npm install -g vue-cli
 
   checkout:
     <<: *defaults
