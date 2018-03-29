@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/temping/vue-simple/tree/master.svg?style=shield)](https://circleci.com/gh/temping/vue-simple/tree/master)
+
 # vue-simple
 Very simple vue template
 
