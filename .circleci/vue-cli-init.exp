@@ -10,20 +10,20 @@ set init_author [lindex $argv 2]
 spawn vue init temping/vue-simple sample
 
 expect {
-  "name" {
+  -re "App name" {
     send "$init_name\r"
     exp_continue
   }
 
-  "description" {
+  -re "description" {
     send "$init_name\r"
     exp_continue
   }
 
-  "Author" {
+  -re "Author" {
     send "$init_name\r"
     exp_continue
   }
 }
 
-interact
+expect eof
