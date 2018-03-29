@@ -12,21 +12,6 @@ jobs:
       # Checkout repository
       - checkout
 
-      ## Restore cache
-      #- restore_cache:
-      #    key: package-{{ checksum "package-lock.json" }}
-
-      ## Install dependencies
-      #- run:
-      #    name: Install Dependencies
-      #    command: npm install
-
-      ## Keep cache
-      #- save_cache:
-      #    key: package-{{ checksum "package-lock.json" }}
-      #    paths:
-      #      - "node_modules"
-
       # Persist files
       - persist_to_workspace:
           root: ~/project
@@ -36,17 +21,11 @@ jobs:
   init:
     <<: *defaults
     steps:
-      - run:
-          name: Install Default dependancies
-          command: sudo apt-get update && sudo apt-get install -y expect && sudo npm install -g vue-cli
       - attach_workspace:
           at: ~/project
       - run:
-          name: pwd
-          command: pwd
-      - run:
-          name: lsa
-          command: ls -a
+          name: Install Default dependancies
+          command: sudo apt-get update && sudo apt-get install -y expect && sudo npm install -g vue-cli
       - persist_to_workspace:
           root: ~/project/vue-simple
           paths:

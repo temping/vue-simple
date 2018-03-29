@@ -2,7 +2,7 @@
 
 # ./vue-cli-init.expect name desc auther
 
-set timeout -1
+set timeout 1
 set init_name [lindex $argv 0]
 set init_description [lindex $argv 1]
 set init_author [lindex $argv 2]
@@ -26,5 +26,4 @@ expect {
   }
 }
 
-wait
-close
+interact
