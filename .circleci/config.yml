@@ -43,11 +43,11 @@ jobs:
           name: Npm install
           command: npm install
       - run:
-          name: server run
-          command: npm start
-      - run:
           name: where
           command: pwd && ls
+      - run:
+          name: server run
+          command: npm start
       - run:
           name: response
           command: |
