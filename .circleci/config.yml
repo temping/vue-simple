@@ -12,20 +12,20 @@ jobs:
       # Checkout repository
       - checkout
 
-      # Restore cache
-      - restore_cache:
-          key: package-{{ checksum "package-lock.json" }}
+      ## Restore cache
+      #- restore_cache:
+      #    key: package-{{ checksum "package-lock.json" }}
 
-      # Install dependencies
-      - run:
-          name: Install Dependencies
-          command: npm install
+      ## Install dependencies
+      #- run:
+      #    name: Install Dependencies
+      #    command: npm install
 
-      # Keep cache
-      - save_cache:
-          key: package-{{ checksum "package-lock.json" }}
-          paths:
-            - "node_modules"
+      ## Keep cache
+      #- save_cache:
+      #    key: package-{{ checksum "package-lock.json" }}
+      #    paths:
+      #      - "node_modules"
 
       # Persist files
       - persist_to_workspace:
