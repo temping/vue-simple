@@ -42,6 +42,7 @@ jobs:
           working_directory: ~/project/vue-simple/sample
           name: server run
           command: npm start
+          background: true
       - run:
           name: response
           command: |
